@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirWise | Indoor Environmental Quality</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">AW</div>
+      <div>
+        <h1>AirWise</h1>
+        <p>Smart Indoor Environmental Quality Monitoring</p>
+      </div>
+    </div>
+    <button id="connectBtn" class="connect-btn">Connect Arduino</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">LIVE SENSOR PROTOTYPE</span>
+        <h2>Monitor your indoor environment in real time.</h2>
+        <p>
+          AirWise reads temperature, humidity and relative light intensity
+          from an Arduino-based sensor prototype and converts them into a
+          simple indoor environmental score with recommendations.
+        </p>
+      </div>
+      <div id="connectionStatus" class="status-card disconnected">
+        <span class="dot"></span>
+        <div>
+          <strong>Arduino disconnected</strong>
+          <small>Click Connect Arduino to begin</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="sensor-grid">
+      <article class="sensor-card">
+        <div class="sensor-icon">🌡️</div>
+        <div>
+          <span>Temperature</span>
+          <strong id="temperature">--</strong><em>°C</em>
+        </div>
+      </article>
+
+      <article class="sensor-card">
+        <div class="sensor-icon">💧</div>
+        <div>
+          <span>Humidity</span>
+          <strong id="humidity">--</strong><em>%</em>
+        </div>
+      </article>
+
+      <article class="sensor-card">
+        <div class="sensor-icon">💡</div>
+        <div>
+          <span>Light Intensity</span>
+          <strong id="light">--</strong><em>raw</em>
+        </div>
+      </article>
+    </section>
+
+    <section class="analysis-grid">
+      <article class="score-card">
+        <div class="section-title">
+          <h3>Indoor Environment Score</h3>
+          <span>Prototype rule-based analysis</span>
+        </div>
+        <div class="score-wrap">
+          <div id="scoreCircle" class="score-circle">
+            <strong id="score">--</strong>
+            <span>/ 100</span>
+          </div>
+          <div>
+            <div id="status" class="status-pill neutral">WAITING</div>
+            <p id="scoreMessage">Connect the Arduino to receive live readings.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="recommend-card">
+        <div class="section-title">
+          <h3>Recommendations</h3>
+          <span>Based on current readings</span>
+        </div>
+        <ul id="recommendations">
+          <li>Connect the Arduino to start monitoring.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="prototype-info">
+      <div>
+        <h3>Prototype Flow</h3>
+        <p>DHT11 + LDR → Arduino UNO → USB Serial → AirWise Web Dashboard</p>
+      </div>
+      <div>
+        <h3>Important Note</h3>
+        <p>
+          Light is treated as an additional indoor environmental/comfort
+          parameter. The prototype does not directly measure pollutants or CO₂.
+        </p>
+      </div>
+    </section>
+
+    <section class="manual-section">
+      <div class="section-title">
+        <h3>Demo / Manual Test</h3>
+        <span>Useful if Arduino is unavailable during presentation</span>
+      </div>
+      <div class="manual-grid">
+        <label>Temperature (°C)
+          <input id="manualTemp" type="number" step="0.1" value="24">
+        </label>
+        <label>Humidity (%)
+          <input id="manualHumidity" type="number" step="0.1" value="40">
+        </label>
+        <label>Light (raw)
+          <input id="manualLight" type="number" value="500">
+        </label>
+        <button id="manualBtn">Run Test</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>AirWise — Smart Indoor Environmental Quality Monitoring & Recommendation System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
